@@ -1,0 +1,16 @@
+
+@media (max-width: 1415px) {
+    .signup_btn{
+        font-size: 90% !important;
+    }
+
+    .pricing{
+        display: flex !important;
+    }
+}
+
+@media (max-width: 994px) {
+    .signup_btn{
+        font-size: 60% !important;
+    }
+}

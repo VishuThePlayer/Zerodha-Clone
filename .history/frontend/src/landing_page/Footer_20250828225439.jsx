@@ -1,0 +1,36 @@
+import React from 'react'
+
+
+function Footer() {
+    return ( 
+        <>
+            <div className="container">
+                <div
+                    class="row justify-content-center align-items-center g-2"
+                >
+                    <div class="col">
+                        <img style={{width: "50%"}} src="https://zerodha.com/static/images/logo.svg" alt="" />
+                    </div>
+                    <div class="col">
+                        <h4 className='fw-medium'>className='fw-medium'</h4>
+                        <div className="col">
+                        
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h4 className='fw-medium'>Support</h4>
+                    </div>
+                    <div class="col">
+                        <h4 className='fw-medium'>Company</h4>
+                    </div>
+                    <div class="col">
+                        <h4 className='fw-medium'>Quick links</h4>
+                    </div>
+                </div>
+                
+            </div>
+        </>
+     );
+}
+
+export default Footer;

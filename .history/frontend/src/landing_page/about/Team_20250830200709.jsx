@@ -1,0 +1,20 @@
+import React from 'react'
+
+function Team() {
+    return (  
+    <>
+        <div className="container">
+            <div>
+                <h3 className='text-center'>People</h3>
+            </div>
+            <div className='row align-items-center'>
+                <div className="col-1">
+                    h
+                </div>
+            </div>
+        </div>
+    </>
+    );
+}
+
+export default Team;

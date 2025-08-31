@@ -1,0 +1,40 @@
+
+@media (max-width: 1415px) {
+    .signup_btn{
+        font-size: 90% !important;
+    }
+
+}
+
+@media (max-width: 994px) {
+    .signup_btn{
+        font-size: 60% !important;
+    }
+}
+
+/* Team.css */
+.team-photo {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+}
+
+
+@media (max-width: 994px) {
+  .team-photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .team_section{
+    background-color: aqua !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  
+
+  .team_section p{
+    font-size: 40% !important;
+  }
+}
