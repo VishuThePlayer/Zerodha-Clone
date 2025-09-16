@@ -1,14 +1,35 @@
-import React, { useState } from "react";
-import { watchlist } from "../data";
-import Tooltip from '@mui/material/Tooltip';
+import React, { useContext, useEffect, useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
 import Grow from "@mui/material/Grow";
-import Button from '@mui/material/Button';
-import BarChartOutlined from '@mui/icons-material/BarChartOutlined';
+import Button from "@mui/material/Button";
+import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
+import { GeneralContext } from "./GeneralContextProvider";
 
 
 function WatchList() {
+  const [showWatchListActions, setWatchListActions] = useState(null);
+  const [watchlist, setWatchlist] = useState([]); // ✅ dynamic data state
+  const [loading, setLoading] = useState(true);
 
-    const [showWatchListActions, setWatchListActions] = useState(null);
+  // ✅ Fetch data from backend
+  useEffect(() => {
+    const fetchWatchlist = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/allWatchlist");
+        if (!res.ok) throw new Error("Failed to fetch watchlist");
+        const data = await res.json();
+        setWatchlist(data); // store in state
+      } catch (error) {
+        console.error("Error fetching watchlist:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWatchlist();
+  }, []);
+
+  if (loading) return <p>Loading watchlist...</p>;
 
   return (
     <div className="watchlist">
@@ -21,88 +42,65 @@ function WatchList() {
 
       {/* Watchlist Items */}
       <div className="watchlist-items">
-        {watchlist.map((stock, index) => {
-          const changeClass = stock.isDown ? "down" : "up";
-          return (
-            <div 
-              className="watchlist-item" 
-              key={index}
-              onMouseEnter={() => setWatchListActions(index)}
-              onMouseLeave={() => setWatchListActions(null)}
-
-            >
-              
-              <div className="stock-name">{stock.name}</div>
-              <div className="stock-price">{stock.price.toFixed(2)}</div>
-              <div className={`stock-percent ${changeClass}`}>
-                {stock.percent}
+        {watchlist.length === 0 ? (
+          <p>No stocks in watchlist</p>
+        ) : (
+          watchlist.map((stock, index) => {
+            const changeClass = stock.isDown ? "down" : "up";
+            return (
+              <div
+                className="watchlist-item"
+                key={stock.name}
+                onMouseEnter={() => setWatchListActions(index)}
+                onMouseLeave={() => setWatchListActions(null)}
+              >
+                <div className={`stock-name ${changeClass}`}>{stock.name}</div>
+                <div className="stock-price">{Number(stock.price).toFixed(2)}</div>
+                <div className={`stock-percent ${changeClass}`}>
+                  {stock.percent}
+                </div>
+                {showWatchListActions === index && (
+                  <WatchListActions uid={stock.name} Currprice = {stock.price} />
+                )}
               </div>
-              {showWatchListActions == index && <WatchListActions uid={stock.name}/>}
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
     </div>
   );
 }
 
+const WatchListActions = ({ uid, Currprice }) => {
+  const { openBuyWindow } = useContext(GeneralContext);
 
-
-
-const WatchListActions = ({ uid }) => {
-  const data = [
-    {
-    y1: 1,
-    y2: 1,
-  },
-]
-
-const series = [
-  {
-    label: 'Series A',
-    data: data.map((v) => v.y1),
-  },
-  {
-    label: 'Series B',
-    data: data.map((v) => v.y2),
-  },
-];
   return (
-    <span className="actions" style={{ display: "flex",gap: "10px",  position: "absolute", left: "15%"}}>
-      <span>
-        <Tooltip
-          title="Buy (B)"
-          placement="top"
-          arrow
-          slots={{ transition: Grow }} // ✅ use slots.transition instead of TransitionComponent
-        >
-          <Button variant="contained">Buy</Button>
-        </Tooltip>
-      </span>
-      <span>
-        <Tooltip
-          title="Sell (S)"
-          placement="top"
-          arrow
-          slots={{ transition: Grow }} // ✅ use slots.transition instead of TransitionComponent
-        >
-          <Button variant="contained" color="error">Sell</Button>
-        </Tooltip>
-      </span>
+    <span
+      className="actions"
+      style={{
+        display: "flex",
+        gap: "10px",
+        position: "absolute",
+        left: "15%",
+      }}
+    >
+      <Tooltip title="Buy (B)" placement="top" arrow slots={{ transition: Grow }}>
+        <Button variant="contained" onClick={() => openBuyWindow(uid, Currprice)}>
+          Buy
+        </Button>
+      </Tooltip>
 
-      <span>
-        <Tooltip
-          title="View Chart"
-          placement="top"
-          arrow
-          slots={{ transition: Grow }} // ✅ use slots.transition instead of TransitionComponent
-        >
-            <button className="action">
-            <BarChartOutlined className="icon" />
-          </button>
-        </Tooltip>
-      </span>
+      <Tooltip title="Sell (S)" placement="top" arrow slots={{ transition: Grow }}>
+        <Button variant="contained" color="error">
+          Sell
+        </Button>
+      </Tooltip>
 
+      <Tooltip title="View Chart" placement="top" arrow slots={{ transition: Grow }}>
+        <button className="action">
+          <BarChartOutlined className="icon" />
+        </button>
+      </Tooltip>
     </span>
   );
 };
