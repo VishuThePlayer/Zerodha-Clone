@@ -25,7 +25,7 @@ function Navbar() {
 
         {/* Collapsible content */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="fs-5 navbar-nav ms-auto gap-3 mb-2 mb-lg-0 align-items-center">
+          <ul className="fs-5 navbar-nav ms-auto gap-5 mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link" to="/signup">Signup</Link>
             </li>
@@ -43,7 +43,7 @@ function Navbar() {
             </li>
 
             {/* Dropdown Menu */}
-            {/* <li className="nav-item dropdown">
+            <li className="nav-item dropdown">
               <Link 
                 className="nav-link dropdown-toggle" 
                 to="#" 
@@ -57,26 +57,7 @@ function Navbar() {
                 <li className="dropdown-item">Hello</li>
                 <li className="dropdown-item">Hallo</li>
               </ul>
-            </li> */}
-
-            {/* Login Button */}
-            <li className="nav-item">
-              <Link
-                to="/login"
-                className="btn btn-primary btn-sm fw-bold px-4 py-2 rounded-pill shadow-sm"
-                style={{
-                  display: "inline-block", // ✅ Link behaves like button
-                  transition: "all 0.2s ease-in-out",
-                  textDecoration: "none", // ✅ Remove underline
-                  color: "white", // ✅ Text color same as button
-                }}
-                onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
-                onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
-              >
-                Login
-              </Link>
             </li>
-
           </ul>
         </div>
       </div>
