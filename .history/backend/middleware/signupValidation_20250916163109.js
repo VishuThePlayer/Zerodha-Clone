@@ -1,0 +1,6 @@
+const Joi = require('joi');
+
+
+module.exports.signupValidation = Joi.object({
+    emailm
+})

@@ -1,0 +1,128 @@
+/* ---------- visual polish tokens ---------- */
+:root{
+  --ui-border: rgba(95, 92, 92, 0.28);
+  --ui-text: #1f2937;
+  --ui-muted: #6b7280;
+  --ui-bg: #ffffff;
+  --ui-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --ui-border: rgba(255,255,255,.14);
+    --ui-text: #e5e7eb;
+    --ui-muted: #9ca3af;
+    --ui-bg: #0b0b0b;
+    --ui-shadow: 0 10px 30px rgba(0,0,0,.5);
+  }
+}
+
+/* improve numeric alignment and truncation safety */
+.indices-container{ font-variant-numeric: tabular-nums; }
+.menu-container, .menu-right, .menu-list{ min-width: 0; }
+.menu-link{ color: var(--ui-text); }
+.user-id{ color: var(--ui-muted); }
+
+/* nicer hover/active underline */
+.menu-link{
+  position: relative;
+}
+.menu-link:hover::after,
+.menu-link[aria-current="page"]::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 2px;
+  background: linear-gradient(90deg,#f97316,#ef4444);
+}
+
+/* focus-visible for keyboard users */
+.menu-link:focus-visible,
+.menu-toggle:focus-visible{
+  outline: 2px solid #3b82f6;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- collapsible drawer animation ---------- */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translate3d(12px,0,0) scale(.98); }
+  to   { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce){
+  .menu-link,
+  .menu-container.open .menu-right{ transition: none !important; animation: none !important; }
+}
+
+/* make sure the indices box is actually a row on small overrides (your original had `flex: row`) */
+.indices-container{ flex-direction: row; }
+
+/* ---------- MOBILE BEHAVIOUR (keeps your existing 720px rules) ---------- */
+@media (max-width: 720px){
+  /* safe-area support for notches */
+  .menu-container.open .menu-right{
+    background: var(--ui-bg);
+    border-color: var(--ui-border);
+    box-shadow: var(--ui-shadow);
+    animation: slideInRight .18s ease-out both;
+    /* place with safe-area padding */
+    top: calc(56px + env(safe-area-inset-top));
+    right: calc(8px + env(safe-area-inset-right));
+    padding: 12px clamp(10px, 2vw, 14px);
+  }
+
+  /* make item targets comfy-sized on touch */
+  .menu-container.open .menu-link{
+    padding: 6px 2px;
+    font-size: clamp(.95rem, 2.8vw, 1rem);
+  }
+
+  /* Avatar & text scale nicely */
+  .menu-container.open .avatar{ width: 32px; height: 32px; }
+  .menu-container.open .user-id{ font-size: .9rem; }
+
+  /* prevent weird scroll behind drawer */
+  body:has(.menu-container.open){ overflow: hidden; }
+}
+
+/* ---------- TWEAKED BREAKPOINTS FOR BETTER FLUIDITY ---------- */
+@media (max-width: 1100px){
+  .menu-list{ gap: 20px; }
+}
+
+@media (max-width: 900px){
+  .menu-list{ gap: 18px; }
+  .menu-brand{ font-size: clamp(1rem, 2vw, 1.05rem); }
+}
+
+@media (max-width: 780px){
+  .menu-link{ font-size: 0.98rem; }
+}
+
+/* Your 720px block already exists; we only complement sizes */
+@media (max-width: 640px){
+  .menu-list{ gap: 12px; }
+}
+
+/* Your 520px block already exists; enhance truncation */
+@media (max-width: 520px){
+  .menu-right{ width: 100%; justify-content: flex-end; }
+  .menu-list{ gap: 12px; }
+  .menu-logo{ min-width: 0; }
+  .menu-brand{
+    max-width: 12ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* ultra small — drawer width & padding adjust (you already have 420px) */
+@media (max-width: 380px){
+  .menu-container.open .menu-right{
+    width: min(94vw, 280px);
+    padding: 10px;
+  }
+}

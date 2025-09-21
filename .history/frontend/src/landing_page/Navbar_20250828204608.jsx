@@ -1,0 +1,58 @@
+import React from 'react';
+
+function Navbar() {
+  return ( 
+    <div className='container'>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary p-2">
+        <div className="container-fluid">
+          {/* Brand / Logo */}
+          <a className="fs-2 navbar-brand" href="#">
+            <img style={{width: "25%"}} src="https://zerodha.com/static/images/logo.svg" alt="logo" />
+          </a>
+
+          {/* Toggle button for mobile */}
+          <button 
+            className="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          {/* Collapsible content */}
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto gap-5 mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link" href="#">Signup</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">About</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Products</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Pricing</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Support</a>
+              </li>
+            </ul>
+                <ul classN="dropdown-menu">
+                <li><a classN="dropdown-item" href="#">Action</a></li>
+                <li><a classN="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a classN="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
+}
+
+export default Navbar;

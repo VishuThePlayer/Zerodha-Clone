@@ -1,0 +1,118 @@
+/* ---------- Base (kept) ---------- */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* ---------- Top bar ---------- */
+.topbar-container{
+  position: sticky; top: 0; z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* indices left, Menu right */
+  gap: 16px;
+  padding: 0 16px;
+  height: 56px;
+  border-bottom: 1px solid rgba(95, 92, 92, 0.295);
+  backdrop-filter: saturate(160%) blur(6px);
+  background: rgba(255,255,255,0.65);
+}
+
+/* ---------- Indices group ---------- */
+.indices-container{
+  display: flex;
+  align-items: center;
+  gap: 20px;                /* modern spacing */
+  padding: 0 16px 0 0;      /* right pad before divider */
+  border-right: 1px solid rgba(95, 92, 92, 0.295);
+  flex: 0 1 40%;            /* occupy ~40% but shrink if needed */
+  min-width: 0;             /* allow content to shrink on small screens */
+}
+
+/* Each index block (nifty / sensex) */
+.indices-container > *{
+  display: flex;
+  align-items: baseline;     /* nicer number alignment */
+  gap: 10px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums; /* aligned digits */
+}
+
+/* Optional widths – keep them but make them flexible on small screens */
+.nifty,
+.sensex{
+  width: 30%;
+}
+
+/* Labels */
+.index{
+  margin-right: 6px;         /* a touch tighter than 10px */
+  font-weight: 600;
+  color: #111827;            /* slightly darker for label */
+}
+
+/* Points: your JSX uses className="index.points"
+   This selector targets a class literally named "index.points" */
+.index\.points{
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* Percent (neutral by default; you can color via inline style later) */
+.percent{
+  font-size: 0.9rem;
+  color: #6b7280;            /* muted */
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 900px){
+  .topbar-container{
+    height: 52px;
+    padding: 0 12px;
+  }
+  .indices-container{
+    gap: 14px;
+    padding-right: 12px;
+    flex: 1 1 auto;          /* give indices more breathing room */
+  }
+  .nifty, .sensex{
+    width: auto;             /* let them size to content */
+  }
+}
+
+@media (max-width: 640px){
+  .topbar-container{
+    height: auto;
+    padding: 8px 12px;
+    gap: 12px;
+  }
+  .indices-container{
+    gap: 10px;
+    border-right: none;      /* drop divider on very small screens */
+    padding-right: 0;
+  }
+  .index{ font-size: 0.95rem; }
+  .index\.points{ font-size: 0.95rem; }
+  .percent{ font-size: 0.85rem; }
+}
+
+/* ---------- Dark mode polish ---------- */
+@media (prefers-color-scheme: dark){
+  .topbar-container{
+    border-bottom-color: rgba(255,255,255,0.12);
+;
+  }
+  .indices-container{
+    border-right-color: rgba(255,255,255,0.12);
+  }
+  .index{ color: #e5e7eb; }
+  .percent{ color: #9ca3af; }
+}

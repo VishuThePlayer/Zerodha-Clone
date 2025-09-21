@@ -1,0 +1,14 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import {BrowserRouter, Routes, Rp}
+import HomePage from "./landing_page/home/HomePage";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <div>
+      <HomePage/>
+    </div>
+  </React.StrictMode>
+);

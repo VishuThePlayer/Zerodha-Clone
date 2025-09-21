@@ -1,0 +1,878 @@
+/* Root variables for easy theming */
+:root{
+  --bg: #ffffff;
+  --panel-bg: #ffffff;
+  --muted: #6b7280;
+  --text: #1f2937;
+  --accent: #dc2626; /* red-ish */
+  --border: rgba(95,92,92,0.28);
+  --shadow: 0 8px 30px rgba(0,0,0,0.06);
+  --radius: 12px;
+  --container-gutter: 16px;
+  --profit: #16a34a; /* green */
+  --scroll-fade-color: #f6f7f9;
+}
+
+/* Reset / base */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+/* prevent the entire page from creating horizontal overflow
+   while letting internal wrappers (like .scroll-table) scroll */
+html, body { overflow-x: hidden; }
+body{
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--scroll-fade-color);
+  color: var(--text);
+  line-height: 1.35;
+}
+
+/* code font */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* ---------------------------
+   Topbar
+   --------------------------- */
+.topbar-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 10px calc(var(--container-gutter) * 1);
+  border-bottom: 1px solid rgba(95, 92, 92, 0.095);
+  background: linear-gradient(180deg, #ffffff, #fbfbfb);
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+}
+
+/* indices-container sensex nifty bar */
+.indices-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  flex-basis: 35%;
+  border-right: 1px solid var(--border);
+  min-width: 220px;
+  padding-right: 8px;
+}
+
+.indices-container > *{
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nifty{ width: 40%; }
+.sensex{ width: 30%; }
+.index{ margin-right: 10px; }
+
+/* top bar menu */
+.menu-container{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  padding-left: 12px;
+}
+
+/* brand/logo */
+.menu-logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+.menu-brand{
+  font-weight: 700;
+  letter-spacing: .2px;
+  font-size: 1.05rem;
+}
+
+/* right side nav + user */
+.menu-right{
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* nav list */
+.menu-list{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+/* link styled buttons */
+.menu-link{
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  transition: opacity .15s ease, color .15s ease;
+}
+.menu-link:hover{ opacity: .75; }
+.menu-link:focus{ outline: 2px solid #3b82f6; outline-offset: 2px; }
+.menu-link[aria-current="page"]{ font-weight: 600; }
+
+/* divider */
+.menu-divider{
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+}
+
+/* user badge */
+.user{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.avatar{
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 1px solid rgba(0,0,0,.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; letter-spacing: .3px;
+  color: #374151;
+}
+.user-id{
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* Menu toggle (mobile) */
+.menu-toggle{
+  display: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 6px;
+  line-height: 0;
+  cursor: pointer;
+  color: #374151;
+}
+.menu-backdrop{ display: none; }
+
+/* ---------------------------
+   Dashboard Layout
+   --------------------------- */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 18px;
+  align-items: flex-start;
+}
+
+/* watchlist + content sizing */
+/* Watchlist container */
+.watchlist {
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+  border: 1px solid var(--border);
+}
+
+/* Search box */
+.watchlist-search {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.watchlist-search:focus {
+  border-color: var(--accent);
+}
+
+/* Watchlist items wrapper */
+.watchlist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* Individual item */
+.watchlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fafafa;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.watchlist-item:hover {
+  background: #f0f0f0;
+}
+
+/* Stock details */
+.stock-name {
+  font-weight: 600;
+  flex: 1;
+}
+
+.stock-price {
+  font-weight: 500;
+  color: var(--text);
+  margin-right: 8px;
+}
+
+.stock-percent {
+  font-weight: 600;
+  min-width: 55px;
+  text-align: right;
+}
+
+/* Colors for up / down */
+.stock-percent.up {
+  color: #16a34a; /* green */
+}
+
+.stock-percent.down {
+  color: #dc2626; /* red */
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .watchlist {
+    padding: 10px;
+  }
+
+  .watchlist-item {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+}
+
+
+/* summary / user blocks */
+.summary {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 0 0 5%;
+}
+
+.user {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  flex: 0.5;
+  justify-content: flex-end;
+}
+.user-text{
+  text-align: end;
+  display: flex;
+  width: 96%;
+  border-bottom: 1px solid var(--accent);
+}
+
+/* Equity / Holding sections */
+.Equity, .Holding {
+  width: 96%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12%;
+  flex: 2;
+  border-bottom: 1px solid var(--accent);
+}
+.Equity-text { display: flex; flex-direction: column; }
+.equity-content{ display: flex; flex-direction: row; align-items: center; }
+.equity-content-1{ flex-grow: 0.5; border-right: 1px solid var(--accent); }
+.equity-content-2{ flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 12px; }
+
+/* ---------------------------
+   Watchlist styles
+   --------------------------- */
+.watchlist-search {
+  width: 90%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  color: #333;
+  outline: none;
+  transition: border 0.15s ease, background 0.15s ease;
+}
+.watchlist-search:focus {
+  border-color: #bdbdbd;
+  background-color: #fff;
+}
+
+/* ---------------------------
+   Orders section
+   --------------------------- */
+.orders-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: auto;
+  min-height: 60vh;
+  position: relative;
+  padding: 18px;
+  width: 100%;
+}
+.orders-empty { text-align: center; margin-top: 48px; }
+.orders-empty h2 { font-size: 1.4rem; color: #333; margin-bottom: 12px; }
+.get-started-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.get-started-btn:hover { background-color: #c62828; }
+
+/* ---------------------------
+   Positions Table (responsive)
+   --------------------------- */
+
+/* Outer container ensures smooth horizontal scroll when needed */
+.positions {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    overflow-x: auto;  
+}
+
+/* inner scroll area: allow swipe horizontally */
+.positions .positions-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
+}
+
+/* Table */
+.positions-table {
+    overflow-x: auto;  
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px; /* keeps columns readable even on small screens */
+    background: var(--panel-bg);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin: 0 auto;
+}
+
+/* header row */
+.positions-table thead tr {
+  background-color: #f7f7f7;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.positions-table td, .positions-table th {
+    padding: 14px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/* hover */
+.positions-table tbody tr:hover {
+    background-color: #fafafa;
+    transition: background-color 0.12s ease-in-out;
+}
+
+/* highlight columns (P&L, Change) */
+.positions-table td:nth-child(6) {
+    font-weight: 600;
+    color: #d32f2f; /* loss color default */
+}
+.positions-table td:nth-child(7) {
+    font-weight: 600;
+    color: #d32f2f;
+}
+
+
+/* scroll fade (left & right) to indicate horizontal scroll */
+.positions::before,
+.positions::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 26px;
+  pointer-events: none;
+  z-index: 8;
+}
+.positions::before{
+  left: 0;
+  background: linear-gradient(90deg, rgba(246,247,249,1), rgba(246,247,249,0));
+}
+.positions::after{
+  right: 0;
+  background: linear-gradient(270deg, rgba(246,247,249,1), rgba(246,247,249,0));
+}
+
+/* Small visual tweak: make header sticky when scrolling horizontally inside viewport height,
+   but only if table height is tall enough. */
+.positions-table thead th{
+  position: sticky;
+  top: 0;
+  background: #f7f7f7;
+  z-index: 3;
+}
+
+
+/* ---------------------------
+   Topbar
+   --------------------------- */
+.topbar-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 10px calc(var(--container-gutter) * 1);
+  border-bottom: 1px solid rgba(95, 92, 92, 0.095);
+  background: linear-gradient(180deg, var(--panel-bg), #fbfbfb);
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* indices container */
+.indices-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  flex-basis: 35%;
+  border-right: 1px solid var(--border);
+  min-width: 220px;
+  padding-right: 8px;
+}
+.indices-container > *{ display: flex; align-items: center; white-space: nowrap; }
+
+/* menu */
+.menu-container{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  padding-left: 12px;
+}
+.menu-logo{ display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+.menu-brand{ font-weight: 700; letter-spacing: .2px; font-size: 1.05rem; }
+
+/* right nav */
+.menu-right{ margin-right: 6px; display: flex; align-items: center; gap: 16px; min-width: 0; }
+.menu-list{ display: flex; align-items: center; gap: 24px; list-style: none; margin: 0; padding: 0; white-space: nowrap; }
+.menu-link{ appearance: none; background: none; border: none; padding: 0; font: inherit; color: var(--text); cursor: pointer; transition: opacity .15s ease, color .15s ease; }
+.menu-link:hover{ opacity: .75; }
+.menu-link:focus{ outline: 2px solid #3b82f6; outline-offset: 2px; }
+.menu-link[aria-current="page"]{ font-weight: 600; }
+.menu-divider{ width: 1px; height: 24px; background: var(--border); }
+
+/* user */
+.user{ display: flex; align-items: center; gap: 8px; }
+.avatar{ width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; border: 1px solid rgba(0,0,0,.06); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; letter-spacing: .3px; color: #374151; }
+.user-id{ color: var(--muted); font-size: .95rem; }
+
+/* Mobile burger toggle */
+.menu-toggle{ display: none; appearance: none; background: none; border: 0; padding: 6px; line-height: 0; cursor: pointer; color: #374151; }
+.menu-backdrop{ display: none; }
+
+/* ---------------------------
+   Dashboard Layout
+   --------------------------- */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 18px;
+  align-items: flex-start;
+}
+
+/* watchlist + content sizing */
+.watchlist { flex: 1.25; display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 10px; }
+.content { flex: 3.75; border-left: 1px solid rgba(0,0,0,0.06); min-height: calc(100vh - 86px); background: transparent; padding-left: 20px; }
+
+/* summary / user blocks */
+.summary { display: flex; flex-direction: column; height: 100%; padding: 0 0 0 5%; }
+.user { display: flex; flex-direction: column; flex: 0.5; justify-content: flex-end; align-items: flex-start; }
+.user-text{ text-align: end; display: flex; width: 96%; border-bottom: 1px solid var(--accent); }
+
+/* Equity / Holding sections */
+.Equity, .Holding { width: 96%; justify-content: center; display: flex; flex-direction: column; gap: 12%; flex: 2; border-bottom: 1px solid var(--accent); }
+.Equity-text { display: flex; flex-direction: column; }
+.equity-content{ display: flex; flex-direction: row; align-items: center; }
+.equity-content-1{ flex-grow: 0.5; border-right: 1px solid var(--accent); }
+.equity-content-2{ flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 12px; }
+
+/* ---------------------------
+   Watchlist styles
+   --------------------------- */
+.watchlist-search { width: 90%; padding: 10px 12px; font-size: 1rem; border: 1px solid #ddd; border-radius: 8px; background-color: #fafafa; color: #333; outline: none; transition: border 0.15s ease, background 0.15s ease; }
+.watchlist-search:focus { border-color: #bdbdbd; background-color: #fff; }
+
+/* ---------------------------
+   Orders / Holdings / Positions Table (shared styles)
+   --------------------------- */
+
+/* Generic scrollable table wrapper (use for .order-table, .positions, .holdings) */
+.scroll-table {
+  width: 100%;
+  background: transparent;
+  padding: 8px 6px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+/* subtle scrollbar styling (webkit) */
+.scroll-table::-webkit-scrollbar { height: 8px; }
+.scroll-table::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.06); border-radius: 6px; }
+
+/* Table base */
+.scroll-table table {
+  width: 100%;
+  min-width: 640px; /* adjust per number of columns */
+  border-collapse: collapse;
+  background: var(--panel-bg);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+}
+
+/* table header */
+.scroll-table table thead th,
+.scroll-table table tr:first-child th,
+.scroll-table table tr:first-child td {
+  background: #fbfbfc;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  padding: 12px 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+/* table cells */
+.scroll-table table td,
+.scroll-table table th {
+  align-items: self-start;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #f1f1f1;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+/* zebra + hover */
+.scroll-table table tbody tr:nth-child(odd) { background: #ffffff; }
+.scroll-table table tbody tr:nth-child(even) { background: #fbfbfb; }
+.scroll-table table tbody tr:hover { background: #f4f6f8; transition: background-color 0.12s ease; }
+
+/* column hints */
+.scroll-table table td:nth-child(1), /* instrument name aligned left */
+.scroll-table table td:nth-child(2),
+.scroll-table table td:nth-child(3),
+.scroll-table table td:nth-child(4),
+.scroll-table table td:nth-child(5) { width: 85px; }
+
+/* profit / loss */
+.profit { color: var(--profit); font-weight: 600; }
+.loss   { color: var(--accent); font-weight: 600; }
+
+/* small number style */
+.small { font-size: 0.95em; color: var(--muted); }
+
+/* bottom summary cards (shared) */
+.row { display: flex; gap: 18px; margin-top: 14px; flex-wrap: wrap; }
+.row .col { background: var(--panel-bg); padding: 12px 14px; border-radius: 8px; box-shadow: 0 4px 12px rgba(6,8,20,0.04); min-width: 160px; flex: 1; }
+.row .col h5 { margin: 0; font-size: 1.15rem; color: var(--text); }
+.row .col p { margin: 6px 0 0 0; color: var(--muted); font-size: 0.9rem; }
+
+/* focus outlines for accessibility */
+.scroll-table table a:focus,
+.scroll-table table button:focus,
+.scroll-table table tr:focus {
+  outline: 3px solid rgba(59,130,246,0.15);
+  outline-offset: 2px;
+}
+
+/* left-right fade hint for scrollable tables */
+.scroll-table::before,
+.scroll-table::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 36px;
+  pointer-events: none;
+  z-index: 4;
+}
+.scroll-table::before { left: -9px; background: linear-gradient(90deg, var(--scroll-fade-color), rgba(246,247,249,0)); }
+.scroll-table::after  { right: 0; background: linear-gradient(270deg, var(--scroll-fade-color), rgba(246,247,249,0)); }
+
+/* small tweak: add small dot before profit/loss (visual cue) */
+.profit::before { content: ""; display:inline-block; width:8px; height:8px; margin-right:8px; border-radius:50%; background:var(--profit); vertical-align:middle; }
+.loss::before   { content: ""; display:inline-block; width:8px; height:8px; margin-right:8px; border-radius:50%; background:var(--accent); vertical-align:middle; }
+
+.scroll-table tr th{
+  text-align: left;
+}
+/* ---------------------------
+   Specific classes you already use
+   --------------------------- */
+
+/* positions wrapper (alias for scroll-table) */
+.positions { /* keep legacy class working */ }
+.positions .positions-scroll { /* optional internal scroll wrapper if used */ }
+
+/* order-table (Holdings component) */
+.order-table { /* alias to shared scroll-table */
+  /* nothing extra needed; recommended: add both classes in JSX: className="order-table scroll-table" */
+}
+
+/* holdings specific min-width override (if needed) */
+.holdings-table { min-width: 700px; }
+/* ---------------------------
+   Consolidated Responsive Media Queries
+   --------------------------- */
+
+/* Large tablets -> reduce min widths slightly (<=1000px) */
+@media (max-width: 1000px) {
+  .dashboard-container {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .watchlist { flex: 1 1 40%; }
+  .content { flex: 1 1 60%; padding-left: 12px; min-height: auto; }
+
+  /* slightly smaller tables */
+  .scroll-table table,
+  .positions-table,
+  .scroll-table table { min-width: 560px; }
+}
+
+/* Stack dashboard & make topbar scrollable when <=900px */
+@media (max-width: 900px) {
+  .topbar-container {
+    padding: 8px 12px;
+    overflow-x: auto;               /* allow horizontal swipe of topbar */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .watchlist {
+    order: 1;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    padding-bottom: 12px;
+  }
+
+  .watchlist-items{
+    width: 100%;
+  }
+
+  .content {
+    order: 2;
+    width: 100%;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .positions {
+    margin-top: 12px;
+    padding: 6px;
+    scroll-behavior: auto;
+  }
+
+  .indices-container {
+    flex-basis: auto;
+    border-right: none;
+    padding-right: 0;
+  }
+
+  /* topbar nav: keep inline and allow horizontal scrolling when content overflows */
+  .menu-list {
+    gap: 12px;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+  .menu-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  /* table sizing for this breakpoint */
+  .scroll-table table,
+  .positions-table { min-width: 520px; font-size: 13px; }
+}
+
+/* Mobile: <=720px */
+@media (max-width: 720px) {
+  /* show burger, hide inline menu-right */
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .menu-right { display: none; }
+
+  /* drawer styles when menu-container has .open */
+  .menu-container.open .menu-right {
+    display: flex;
+    position: fixed;
+    top: 56px;
+    right: 8px;
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    gap: 12px;
+    flex-direction: column;
+    width: min(92vw, 340px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    z-index: 1000;
+  }
+
+  .menu-container.open .menu-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .menu-container.open .menu-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .menu-container.open .menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.06);
+    z-index: 900;
+  }
+
+  .indices-container {
+    font-size: 0.85rem;
+    gap: 10px;
+    padding: 4px 2px;
+  }
+
+  .menu-brand { font-size: 1rem; }
+  .user-id { display: none; } /* show avatar only */
+  .menu-list { gap: 12px; }
+
+  /* tables smaller on phones */
+  .scroll-table table,
+  .positions-table { min-width: 480px; font-size: 12.5px; }
+  .scroll-table table td,
+  .scroll-table table th,
+  .positions-table td,
+  .positions-table th { padding: 10px 8px; }
+}
+
+@media (max-width: px) {
+  .dashboard-container {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .watchlist { flex: 1 1 40%; }
+  .content { flex: 1 1 60%; padding-left: 12px; min-height: auto; }
+
+  /* slightly smaller tables */
+  .scroll-table table,
+  .positions-table,
+  .scroll-table table { min-width: 560px; }
+}
+
+
+/* Ultra small devices <=420px */
+@media (max-width: 420px) {
+  .container { padding: 0 10px; }
+  .menu-brand { font-size: .95rem; }
+  .indices-container { font-size: 0.75rem; gap: 6px; }
+
+  .scroll-table table,
+  .positions-table { min-width: 440px; font-size: 11.2px; }
+
+  .watchlist-search { width: 96%; font-size: .95rem; padding: 8px 10px; }
+  .row .col { min-width: 120px; font-size: 0.95rem; }
+  .get-started-btn { padding: 8px 14px; font-size: .95rem; border-radius: 6px; }
+}
+
+/* Smallest phones <=360px */
+@media (max-width: 360px) {
+  .scroll-table table,
+  .positions-table { min-width: 420px; font-size: 10.8px; }
+  .scroll-table table td,
+  .scroll-table table th,
+  .positions-table td,
+  .positions-table th { padding: 8px 6px; white-space: nowrap; }
+}
+
+/* Backup: ensure positions-table doesn't get too big on very small screens */
+@media (max-width: 320px) {
+  .positions-table { min-width: 400px; font-size: 10.2px; }
+  .positions-table td, .positions-table th { padding: 6px 5px; }
+}

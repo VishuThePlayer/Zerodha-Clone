@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* top bar with indices-container and Menu */
+.topbar-container{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgba(95, 92, 92, 0.295);
+}
+
+
+/* indices-container sensex nifty bar */
+.indices-container{
+  display: flex;
+  flex: ;  
+}
+
+.indices-container > *{
+  align-items: center;
+  display: flex;
+  white-space: nowrap;
+}
+
+.nifty{
+  width: 40%;
+}
+
+.index{
+  margin-right: 10px;
+}
+
+.sensex{
+  width: 30%;
+}
+
+
+@media (max-width: 685px){
+  .topbar-container{
+    flex: 1 1 10%;
+  }
+  .indices-container{
+    width: 70%;
+    gap: 14px;
+    padding-right: 12px;
+  }
+
+}

@@ -1,0 +1,1 @@
+module.exports.stockDataGeneration = (req, r)

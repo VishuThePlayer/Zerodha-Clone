@@ -1,0 +1,42 @@
+import React, { useState, createContext } from "react";
+import BuyActionWindowPopup from "./BuyActionWindowPopup";
+
+export const GeneralContext = createContext({
+  openBuyWindow: (uid) => {},
+  closeBuyWindow: () => {},
+});
+
+function GeneralContextProvider({ children }) {
+  const [isBuyWindowOpen, setWindowOpen] = useState(false);
+  const [selectedStockUID, setSelectedStockUID] = useState("");
+
+  const handleOpenBuyWindow = (uid) => {
+    setWindowOpen(true);
+    setSelectedStockUID(uid);
+  };
+
+  const handleCloseBuyWindow = () => {
+    setWindowOpen(false);
+    setSelectedStockUID("");
+  };
+
+  return (
+    <GeneralContext.Provider
+      value={{
+        openBuyWindow: handleOpenBuyWindow,
+        closeBuyWindow: handleCloseBuyWindow,
+      }}
+    >
+      {children}
+
+      {isBuyWindowOpen && (
+        <BuyActionWindowPopup
+          uid={selectedStockUID}
+
+        />
+      )}
+    </GeneralContext.Provider>
+  );
+}
+
+export default GeneralContextProvider;
