@@ -43,6 +43,7 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions));
+
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(express.json());
