@@ -9,7 +9,6 @@ import SupportPage from "./landing_page/support/SupportPage";
 import ProductPage from "./landing_page/products/ProductPage";
 import AboutPage from "./landing_page/about/AboutPage";
 import "./landing_page/home.css"
-import Login from "./landing_page/login/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,7 +16,7 @@ root.render(
     <Routes>
       <Route path="/" element={<HomePage/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
-      <Route path="/login" element={<Login/>}></Route>
+      <Route path="/signup" element={</>}></Route>
       <Route path="/pricing" element={<PricingPage/>}></Route>
       <Route path="/about" element={<AboutPage/>}></Route>
       <Route path="/support" element={<SupportPage/>}></Route>

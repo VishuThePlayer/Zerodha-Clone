@@ -17,7 +17,7 @@ root.render(
     <Routes>
       <Route path="/" element={<HomePage/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
-      <Route path="/login" element={<Login/>}></Route>
+      <Route path="/signup" element={<Login/>}></Route>
       <Route path="/pricing" element={<PricingPage/>}></Route>
       <Route path="/about" element={<AboutPage/>}></Route>
       <Route path="/support" element={<SupportPage/>}></Route>
