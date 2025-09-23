@@ -26,6 +26,8 @@ const corsOptions = {
     const allowedOrigins = [
       "https://zerodha-clone-three-delta.vercel.app/login",  // Frontend
       "https://zerodha-clone-59ps-o7p6vztnf-vishutheplayers-projects.vercel.app/",  // Dashboard
+      "http://192.168.1.10:3000",
+      "http://192.168.1.10:3001"  // Mobile access on same LAN
     ];
 
     if (allowedOrigins.indexOf(origin) !== -1) {
