@@ -22,25 +22,21 @@ const corsOptions = {
     // Allow requests with no origin (like Postman or mobile apps)
     if (!origin) return callback(null, true);
 
-    // ✅ Path hata do, sirf domain + protocol rakho
+    // Add your PC’s LAN IP for mobile access
     const allowedOrigins = [
-      "https://zerodha-clone-three-delta.vercel.app",
-      "https://zerodha-clone-59ps-o7p6vztnf-vishutheplayers-projects.vercel.app",
-      "http://localhost:3000", // ✅ For local dev
+      "https://zerodha-clone-three-delta.vercel.app/login",  // Frontend
+      "https://zerodha-clone-59ps-o7p6vztnf-vishutheplayers-projects.vercel.app/",  // Dashboard
     ];
 
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      console.error("❌ CORS blocked for origin:", origin);
-      callback(new Error("Not allowed by CORS"));
-    }
+      callback(new Error("Not allowed by CORS"));v
   },
   credentials: true, // Enable cookies
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-
 
 
 app.use(cors(corsOptions));
