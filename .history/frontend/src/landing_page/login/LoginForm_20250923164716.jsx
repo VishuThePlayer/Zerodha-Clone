@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Snackbar, Alert, Slide } from "@mui/material";
 import { CheckCircle, ErrorOutline } from "@mui/icons-material";
 import axios from "axios";
-
-// 🔧 FIXED: Configure axios for credentials
-axios.defaults.withCredentials = true;
+import { useNavigate } from "react-router-dom";
 
 function SlideTransition(props) {
   return <Slide {...props} direction="down" />;
@@ -16,61 +14,36 @@ function LoginForm() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarType, setSnackbarType] = useState("success");
-  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
     try {
-      console.log("🔧 Attempting login for:", email);
-      
-      const res = await axios.post(
-        "https://zerodha-clone-bui7.onrender.com/api/auth/login",
-        {
-          email,
-          password: password,
-        },
-        {
-          withCredentials: true, // Ensure cookies are sent and received
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }
-      );
-
-      console.log("✅ Login response:", res.data);
+      const res = await axios.post("https://zerodha-clone-bui7.onrender.com/api/auth/login", {
+        email,
+        password: password,
+      },
+      {withCredentials: true}
+    );
 
       if (res.data.success) {
         setSnackbarType("success");
         setSnackbarMessage("🎉 Login successful! Redirecting...");
         setOpenSnackbar(true);
 
-        // 🔧 FIXED: Wait a bit longer and use window.location.replace for better redirect
         setTimeout(() => {
-          window.location.replace("https://zerodha-clone-59ps.vercel.app/");
-        }, 2000);
+        window.location.href = "https://zerodha-clone-59ps.vercel.app/ 
+        }, 1500);
       } else {
         setSnackbarType("error");
         setSnackbarMessage(res.data.message || "Invalid credentials");
         setOpenSnackbar(true);
       }
     } catch (err) {
-      console.error("❌ Login error:", err);
-      
-      let errorMessage = "Login failed. Please try again.";
-      
-      if (err.response?.data?.message) {
-        errorMessage = err.response.data.message;
-      } else if (err.message) {
-        errorMessage = err.message;
-      }
-      
       setSnackbarType("error");
-      setSnackbarMessage(errorMessage);
+      setSnackbarMessage(err.message);
       setOpenSnackbar(true);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -110,7 +83,6 @@ function LoginForm() {
                   placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  disabled={isLoading}
                   required
                 />
               </div>
@@ -127,7 +99,6 @@ function LoginForm() {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  disabled={isLoading}
                   required
                 />
               </div>
@@ -138,15 +109,14 @@ function LoginForm() {
                   type="submit"
                   className="btn btn-primary btn-lg py-3 fs-4 shadow-lg"
                   style={{ borderRadius: "12px" }}
-                  disabled={isLoading}
                 >
-                  {isLoading ? "🔄 Logging in..." : "🔑 Login"}
+                  🔑 Login
                 </button>
               </div>
             </form>
 
             <p className="text-muted small mt-3">
-              Don't have an account?{" "}
+              Don’t have an account?{" "}
               <a href="/signup" className="text-decoration-none">
                 Sign up here
               </a>
