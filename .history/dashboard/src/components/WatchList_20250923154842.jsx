@@ -15,7 +15,7 @@ function WatchList() {
   useEffect(() => {
     const fetchWatchlist = async () => {
       try {
-        const res = await fetch("https://zerodha-clone-bui7.onrender.com/api/orderallWatchlist");
+        const res = await fetch("http://localhost:5000/allWatchlist");
         if (!res.ok) throw new Error("Failed to fetch watchlist");
         const data = await res.json();
         setWatchlist(data); // store in state

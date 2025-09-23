@@ -22,7 +22,7 @@ function AuthGuard({ children }) {
         }
       } catch (error) {
         console.error("Auth check failed:", error);
-        window.location.href = "https://zerodha-clone-three-delta.vercel.app/login";
+        window.location.href = "https://zerodha-clone-bui7.onrender.com/api/login";
       } finally {
         setLoading(false);
       }

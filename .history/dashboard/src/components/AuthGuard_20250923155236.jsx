@@ -18,11 +18,11 @@ function AuthGuard({ children }) {
         if (response.data.success) {
           setUser(response.data.user); // store actual user object
         } else {
-          window.location.href = "https://zerodha-clone-three-delta.vercel.app/login";
+          window.location.href = "https://zerodha-clone-bui7.onrender.com/api/login";
         }
       } catch (error) {
         console.error("Auth check failed:", error);
-        window.location.href = "https://zerodha-clone-three-delta.vercel.app/login";
+        window.location.href = "http://192.168.1.10:3000/login";
       } finally {
         setLoading(false);
       }

@@ -29,7 +29,7 @@ function SignupForm() {
     };
 
     try {
-      const res = await axios.post("https://zerodha-clone-bui7.onrender.com/api/auth/signup", data);
+      const res = await axios.post("http://192.168.1.10:5000/api/auth/signup", data);
       console.log(res.data);
       setOpenSnackbar(true);
 

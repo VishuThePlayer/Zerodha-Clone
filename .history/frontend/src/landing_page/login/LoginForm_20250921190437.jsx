@@ -20,7 +20,7 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://zerodha-clone-bui7.onrender.com/api/auth/login", {
+      const res = await axios.post("http://192.168.1.10:5000/api/auth/login", {
         email,
         password: password,
       },
@@ -33,7 +33,7 @@ function LoginForm() {
         setOpenSnackbar(true);
 
         setTimeout(() => {
-        window.location.href = "https://zerodha-clone-59ps.vercel.app/"; 
+        window.location.href = "http://192.168.1.10:3001/"; 
         }, 1500);
       } else {
         setSnackbarType("error");

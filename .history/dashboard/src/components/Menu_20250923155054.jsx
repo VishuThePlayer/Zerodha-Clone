@@ -10,7 +10,7 @@ function Menu() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("https://zerodha-clone-bui7.onrender.com/api/order/auth/logout", {}, { withCredentials: true });
+      await axios.post("http://192.168.1.10:5000/api/auth/logout", {}, { withCredentials: true });
       setUser(null);
       window.location.href = "/login"; // redirect to login page
       window.location.reload();

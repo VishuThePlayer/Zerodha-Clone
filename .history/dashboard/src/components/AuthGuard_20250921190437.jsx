@@ -13,16 +13,16 @@ function AuthGuard({ children }) {
     const checkAuth = async () => {
       try {
         console.log("Checking authentication...");
-        const response = await axios.get("https://zerodha-clone-bui7.onrender.com/api/auth/me");
+        const response = await axios.get("http://192.168.1.10:5000/api/auth/me");
 
         if (response.data.success) {
           setUser(response.data.user); // store actual user object
         } else {
-          window.location.href = "https://zerodha-clone-three-delta.vercel.app/login";
+          window.location.href = "http://192.168.1.10:3000/login";
         }
       } catch (error) {
         console.error("Auth check failed:", error);
-        window.location.href = "https://zerodha-clone-three-delta.vercel.app/login";
+        window.location.href = "http://192.168.1.10:3000/login";
       } finally {
         setLoading(false);
       }

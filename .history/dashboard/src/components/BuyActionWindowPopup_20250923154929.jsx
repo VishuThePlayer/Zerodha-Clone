@@ -30,7 +30,7 @@ function BuyActionWindowPopup({ uid, Currprice, onClose }) {
 
     console.log("Buying", quantity, "shares of", uid, "at price", price);
     axios
-      .post("https://zerodha-clone-bui7.onrender.com/api/order/", {
+      .post("https://zerodha-clone-bui7.onrender.com/api/order/newOrder", {
         name: uid,
         qty: quantity,
         price: price,

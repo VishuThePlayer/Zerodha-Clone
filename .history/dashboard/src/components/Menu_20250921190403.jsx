@@ -1,23 +1,9 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { AuthContext } from "./AuthGuard";
 
 function Menu() {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-  const { user, setUser } = useContext(AuthContext); // ✅ get setUser to clear on logout
-
-  const handleLogout = async () => {
-    try {
-      await axios.post("https://zerodha-clone-bui7.onrender.com/api/order/auth/logout", {}, { withCredentials: true });
-      setUser(null);
-      window.location.href = "/login"; // redirect to login page
-      window.location.reload();
-    } catch (err) {
-      console.error("Logout failed:", err);
-    }
-  };
 
   // Close on outside click / ESC / resize-to-desktop
   useEffect(() => {
@@ -37,7 +23,12 @@ function Menu() {
   }, [open]);
 
   return (
-    <div className={`menu-container${open ? " open" : ""}`} role="navigation" aria-label="Main" ref={ref}>
+    <div
+      className={`menu-container${open ? " open" : ""}`}
+      role="navigation"
+      aria-label="Main"
+      ref={ref}
+    >
       {/* Left: Logo */}
       <a className="menu-logo" href="/" aria-label="Home">
         <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,6 +53,7 @@ function Menu() {
         type="button"
         onClick={() => setOpen((v) => !v)}
       >
+        {/* hamburger / close */}
         {open ? (
           <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -73,42 +65,46 @@ function Menu() {
         )}
       </button>
 
-      {/* Right: Menu + user */}
+      {/* Right: Menu + user (becomes a drawer on mobile) */}
       <div className="menu-right" id="menu-drawer">
         <ul className="menu-list" onClick={() => setOpen(false)}>
-          <li><Link to="/" className="menu-link" aria-current="page">Dashboard</Link></li>
-          <li><Link to="/orders" className="menu-link">Orders</Link></li>
-          <li><Link to="/holdings" className="menu-link">Holdings</Link></li>
-          <li><Link to="/positions" className="menu-link">Positions</Link></li>
-          <li><Link to="/funds" className="menu-link">Funds</Link></li>
-          <li><Link to="/apps" className="menu-link">Apps</Link></li>
+          <li>
+            <Link to="/" className="menu-link" aria-current="page">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/orders" className="menu-link">Orders</Link>
+          </li>
+          <li>
+            <Link to="/holdings" className="menu-link">Holdings</Link>
+          </li>
+          <li>
+            <Link to="/positions" className="menu-link">Positions</Link>
+          </li>
+          <li>
+            <Link to="/funds" className="menu-link">Funds</Link>
+          </li>
+          <li>
+            <Link to="/apps" className="menu-link">Apps</Link>
+          </li>
         </ul>
 
         <div className="menu-divider" aria-hidden="true"></div>
 
         <div className="user">
-          <div className="avatar" aria-hidden="true">{user?.username?.slice(0, 1).toUpperCase()}</div>
-          <span className="user-id">{user?.username}</span>
-          <button
-            onClick={handleLogout}
-            style={{
-              marginLeft: "10px",
-              padding: "4px 8px",
-              fontSize: "0.9rem",
-              cursor: "pointer",
-              borderRadius: "4px",
-              border: "none",
-              backgroundColor: "#ef4444",
-              color: "white",
-            }}
-          >
-            Logout
-          </button>
+          <div className="avatar" aria-hidden="true">ZU</div>
+          <span className="user-id">USERID</span>
         </div>
       </div>
 
       {/* Backdrop (mobile) */}
-      {open && <button className="menu-backdrop" aria-hidden="true" tabIndex={-1} onClick={() => setOpen(false)} />}
+      {open && (
+        <button
+          className="menu-backdrop"
+          aria-hidden="true"
+          tabIndex={-1}
+          onClick={() => setOpen(false)}
+        />
+      )}
     </div>
   );
 }
