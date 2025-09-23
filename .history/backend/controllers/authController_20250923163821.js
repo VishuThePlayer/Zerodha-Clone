@@ -101,6 +101,7 @@ module.exports.login = async (req, res) => {
     if (process.env.NODE_ENV === "development") {
       cookieOptions.sameSite = "lax";
     } else {
+
       cookieOptions.secure = true;
     }
 
