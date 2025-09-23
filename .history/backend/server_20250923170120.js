@@ -28,6 +28,7 @@ const corsOptions = {
       "https://zerodha-clone-59ps.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001",
+
     ];
 
     console.log("🔍 CORS Check - Origin:", origin);
@@ -57,6 +58,8 @@ const corsOptions = {
 // Apply CORS before other middleware
 app.use(cors(corsOptions));
 
+// Handle preflight requests explicitly
+app.options('*', cors(corsOptions));
 
 // Other middleware
 app.use(cookieParser());
