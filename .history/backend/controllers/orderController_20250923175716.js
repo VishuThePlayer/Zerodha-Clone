@@ -40,7 +40,7 @@ exports.getAllHoldings = async (req, res) => {
 
 exports.getAllOrders = async (req, res) => {
   try {
-    const orders = await Orders.find({});
+    const orde = await Holding.find({});
     res.json(holdings);
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
