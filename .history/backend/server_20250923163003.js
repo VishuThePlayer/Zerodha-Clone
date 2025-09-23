@@ -25,8 +25,7 @@ const corsOptions = {
     // ✅ Path hata do, sirf domain + protocol rakho
     const allowedOrigins = [
       "https://zerodha-clone-three-delta.vercel.app",
-      "https://zerodha-clone-mciov8usv-vishutheplayers-projects.vercel.app/",
-      "https://zerodha-clone-mciov8usv-vishutheplayers-projects.vercel.app/",
+      "https://zerodha-clone-mciov8usv-vishutheplayers-projects.vercel.app/"
       "https://zerodha-clone-59ps.vercel.app",
       "http://localhost:3000", // ✅ For local dev
       "http://localhost:3001", // ✅ For local dev
