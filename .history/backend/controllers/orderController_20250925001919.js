@@ -40,22 +40,13 @@ exports.getAllHoldings = async (req, res) => {
 };
 
 exports.getAllOrders = async (req, res) => {
-  console.log("Received order req")
   try {
-    // ✅ Fetch only orders belonging to the logged-in user
-    const orders = await Orders.find({ user: req.userID }).populate("user", "username email");
-    
-    res.json({
-      success: true,
-      count: orders.length,
-      orders
-    });
+    const orders = await Orders.find({});
+    res.json(orders);
   } catch (error) {
-    console.error("Error fetching user orders:", error);
     res.status(500).json({ success: false, message: error.message });
   }
-};
-
+}
 
 exports.getAllPositions = async (req, res) => {
   try {

@@ -40,7 +40,7 @@ exports.getAllHoldings = async (req, res) => {
 };
 
 exports.getAllOrders = async (req, res) => {
-  console.log("Received order req")
+  
   try {
     // ✅ Fetch only orders belonging to the logged-in user
     const orders = await Orders.find({ user: req.userID }).populate("user", "username email");
