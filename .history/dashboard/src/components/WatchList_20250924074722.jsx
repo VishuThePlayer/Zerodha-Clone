@@ -4,7 +4,7 @@ import Grow from "@mui/material/Grow";
 import Button from "@mui/material/Button";
 import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
 import { GeneralContext } from "./GeneralContextProvider";
-import axios from "axios";
+
 
 function WatchList() {
   const [showWatchListActions, setWatchListActions] = useState(null);
@@ -15,7 +15,7 @@ function WatchList() {
   useEffect(() => {
     axios.get("https://zerodha-clone-bui7.onrender.com/api/watchlist/allWatchlist")
       .then((res) => {
-        setWatchlist(res.data);
+        setHolding(res.data);
       })
   }, []);
 
