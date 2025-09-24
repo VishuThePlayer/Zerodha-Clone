@@ -8,17 +8,7 @@ function Menu() {
   const ref = useRef(null);
   const { user, setUser } = useContext(AuthContext); // ✅ get setUser to clear on logout
 
-  const handleLogout = async () => {
-    try {
-      await axios.post("https://zerodha-clone-bui7.onrender.com/api/auth/logout", {}, { withCredentials: true });
-      setUser(null);
-      window.location.href = "/login"; // redirect to login page
-      window.location.reload();
-    } catch (err) {
-      console.error("Logout failed:", err);
-    }
-  };
-
+F
   // Close on outside click / ESC / resize-to-desktop
   useEffect(() => {
     const onDocClick = (e) => {
