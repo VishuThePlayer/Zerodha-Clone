@@ -21,7 +21,7 @@ function Orders() {
   }, []);
 
   return (
-
+    <div className="orders-container">
       <div className="orders-empty">
         {loading ? (
           <h1>Loading Orders</h1>
@@ -33,25 +33,29 @@ function Orders() {
                         <td>Product</td>
                         <td>Instrument</td>
                         <td>Qty</td>
+                        <td>Avg</td>
+                        <td>LTP</td>
+                        <td>P&L</td>
+                        <td>Chg</td>
                     </tr>
                     {orders.map((item, index) => {
                         return (
                         <tr key={index}>
                             <td>{item.name}</td>
                             <td>{item.qty}</td>
-                            <td>{item.price}</td>
+                            <td>{item.avg.toFixed(2)}</td>
                         </tr>
                         );
                     })}
                 </table>
             </div>
-          // orders.map((ele, i) => (
-          //   <div key={i}>
-          //     <h1>{ele.name}</h1>
-          //     <h1>{ele.qty}</h1>
-          //     <h1>{ele.price}</h1>
-          //   </div>
-          // ))
+          orders.map((ele, i) => (
+            <div key={i}>
+              <h1>{ele.name}</h1>
+              <h1>{ele.qty}</h1>
+              <h1>{ele.price}</h1>
+            </div>
+          ))
         ) : (
           <>
             <h2>You haven’t placed any orders yet</h2>
@@ -60,6 +64,7 @@ function Orders() {
         )
       }
       </div>
+    </div>
   );
 }
 

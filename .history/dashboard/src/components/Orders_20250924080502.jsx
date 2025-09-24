@@ -33,6 +33,7 @@ function Orders() {
                         <td>Product</td>
                         <td>Instrument</td>
                         <td>Qty</td>
+    
                     </tr>
                     {orders.map((item, index) => {
                         return (

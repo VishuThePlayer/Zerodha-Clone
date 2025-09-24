@@ -17,7 +17,7 @@ module.exports.getLivePrice = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      data: response.data?.currentPrice,
+      data: response.data?.,
     });
   } catch (error) {
     console.error("Error fetching stock data:", error.message);
