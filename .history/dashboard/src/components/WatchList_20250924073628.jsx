@@ -4,7 +4,6 @@ import Grow from "@mui/material/Grow";
 import Button from "@mui/material/Button";
 import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
 import { GeneralContext } from "./GeneralContextProvider";
-import { set } from "../../../backend/server";
 
 
 function WatchList() {
@@ -20,7 +19,7 @@ function WatchList() {
         if (!res.ok) throw new Error("Failed to fetch watchlist");
         const data = await res.json();
         setWatchlist(data); // store in state
-        setLoading(false);
+        
       } catch (error) {
         console.error("Error fetching watchlist:", error);
       } finally {

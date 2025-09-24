@@ -12,7 +12,7 @@ function Positions() {
                 setPosition(res.data);
             })
         } catch (error) {
-            console.log(error.message);
+            console.log(error.mes);
         }
     }, [])
     return ( 

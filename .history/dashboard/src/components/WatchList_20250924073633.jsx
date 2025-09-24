@@ -20,7 +20,7 @@ function WatchList() {
         if (!res.ok) throw new Error("Failed to fetch watchlist");
         const data = await res.json();
         setWatchlist(data); // store in state
-        setLoading(false);
+        setLo
       } catch (error) {
         console.error("Error fetching watchlist:", error);
       } finally {
