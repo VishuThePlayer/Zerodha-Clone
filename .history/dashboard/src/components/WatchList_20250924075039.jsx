@@ -16,7 +16,7 @@ function WatchList() {
     axios.get("https://zerodha-clone-bui7.onrender.com/api/watchlist/allWatchlist")
       .then((res) => {
         setWatchlist(res.data);
-        setLoading(false);
+        setLoading(fals)
       })
   }, []);
 
