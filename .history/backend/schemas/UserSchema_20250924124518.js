@@ -2,7 +2,7 @@ const { Schema } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: "User"}, // <-- reference to User
+  user: { type: Schema.Types.ObjectId, ref: "User",}, // <-- reference to User
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   firstName: { type: String, required: true, trim: true, minlength: 2 },
   lastName: { type: String, trim: true },
