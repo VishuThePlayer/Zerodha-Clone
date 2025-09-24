@@ -13,8 +13,6 @@ import {
   CircularProgress,
 } from "@mui/material";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "./AuthGuard";
 
 function BuyActionWindowPopup({
   uid,

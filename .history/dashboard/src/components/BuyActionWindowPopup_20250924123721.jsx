@@ -13,8 +13,6 @@ import {
   CircularProgress,
 } from "@mui/material";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "./AuthGuard";
 
 function BuyActionWindowPopup({
   uid,
@@ -25,7 +23,7 @@ function BuyActionWindowPopup({
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { user } = useContext(AuthContext); // ✅ get setUser to clear on logout
+  const { user } = useConte(AuthContext); // ✅ get setUser to clear on logout
 
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
