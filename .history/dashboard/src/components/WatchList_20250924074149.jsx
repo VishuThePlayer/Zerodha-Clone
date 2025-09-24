@@ -22,7 +22,7 @@ function WatchList() {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching watchlist:", error);
-      }
+
     };
 
     fetchWatchlist();
