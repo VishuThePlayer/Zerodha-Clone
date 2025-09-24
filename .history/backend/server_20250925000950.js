@@ -70,24 +70,24 @@ app.use(express.json());
 
 
 
-// // Add request logging middleware
-// app.use(async (req, res, next) => {
-//   try {
-//     let token = req.cookies.token;
-//     if(!token) return error({message: "Token not Found"})
-//     const decoded = jwt.verify(token, process.env.TOKEN_KEY)
-//     const user = await User.findById(decoded.id);
-//     req.userID = decoded.id;
-//     console.log("!--------------------------------!")
-//     console.log("Req was made by user:", user.username);
-//     console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
-//     console.log('Origin:', req.get('Origin'));
-//     console.log('Cookies:', req.cookies);
-//     next();
-//   } catch (error) {
-//   }
+// Add request logging middleware
+app.use(async (req, res, next) => {
+  try {
+    let token = req.cookies.token;
+    if(!token) return error({message: "Token not Found"})
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY)
+    const user = await User.findById(decoded.id);
+    req.userID = decoded.id;
+    console.log("!--------------------------------!")
+    console.log("Req was made by user:", user.username);
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+    console.log('Origin:', req.get('Origin'));
+    console.log('Cookies:', req.cookies);
+    next();
+  } catch (error) {
+  }
 
-// });
+});
 
 // Routes
 app.use("/api/auth", authRoutes);
