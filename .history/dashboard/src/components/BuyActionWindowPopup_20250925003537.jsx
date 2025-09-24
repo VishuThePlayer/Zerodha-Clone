@@ -30,7 +30,7 @@ function BuyActionWindowPopup({
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("warning");
-  const [orderSuccess, setOrderSuccess] = useState(false);
+  const [orderSuccess, setOrderSuccess] = useState(false)
   // useEffect: sync price when Currprice changes (optional but convenient)
   useEffect(() => {
     if (Currprice) setPrice(Number(Currprice));
@@ -69,6 +69,7 @@ function BuyActionWindowPopup({
     setLoading(true);
     try {
       const payload = {
+        user: user,
         name: uid,
         qty: Number(quantity),
         price: Number(price),

@@ -7,7 +7,7 @@ function Orders() {
   const [orders, setorder] = useState(null);
   useEffect(() => {
     axios.get(
-      "http://localhost:5000/api/orders/allorders",
+      "localhost:/api/orders/allorders",
       { withCredentials: true } // ✅ cookie-based auth ke liye
     )
     .then((res) => {

@@ -61,6 +61,7 @@ function BuyActionWindowPopup({
     // }
 
     return true;
+    console.log(user)
   };
 
   const handleBuy = async () => {
@@ -69,6 +70,7 @@ function BuyActionWindowPopup({
     setLoading(true);
     try {
       const payload = {
+        user: user._id,
         name: uid,
         qty: Number(quantity),
         price: Number(price),

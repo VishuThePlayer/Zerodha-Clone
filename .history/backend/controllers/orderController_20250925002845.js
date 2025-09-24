@@ -16,7 +16,6 @@ exports.createOrder = async (req, res) => {
     };
 
     console.log("📥 Incoming Order:", data);
-    console.log("📥 Incoming Order:", req.userID);
 
     const newOrder = new Orders(data);
     const newHolding = new Holding(Holdingdata);
@@ -33,7 +32,7 @@ exports.createOrder = async (req, res) => {
 
 exports.getAllHoldings = async (req, res) => {
   try {
-    const holdings = await Holding.find({ user: req.userID}.populate("user", "username email"));
+    const holdings = await Holding.find({ user:L});
     res.json(holdings);
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

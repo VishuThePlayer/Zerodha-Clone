@@ -69,6 +69,7 @@ function BuyActionWindowPopup({
     setLoading(true);
     try {
       const payload = {
+        user: user?,
         name: uid,
         qty: Number(quantity),
         price: Number(price),

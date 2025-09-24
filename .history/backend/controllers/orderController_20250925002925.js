@@ -16,7 +16,6 @@ exports.createOrder = async (req, res) => {
     };
 
     console.log("📥 Incoming Order:", data);
-    console.log("📥 Incoming Order:", req.userID);
 
     const newOrder = new Orders(data);
     const newHolding = new Holding(Holdingdata);
