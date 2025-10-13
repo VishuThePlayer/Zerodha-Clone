@@ -21,7 +21,7 @@ const sessionPool = {
 };
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const proxy = process.env.proxy;
+const proxy = "http://HighSylvie243-country-in:vXOpsIJ14vXVb1xT@p47.boltproxies.net:10055";
 const agent = new HttpsProxyAgent(proxy);
 
 const commonHeaders = {

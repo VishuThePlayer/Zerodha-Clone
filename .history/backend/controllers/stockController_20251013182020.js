@@ -21,7 +21,7 @@ const sessionPool = {
 };
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const proxy = process.env.proxy;
+const proxy = process.env.pro;
 const agent = new HttpsProxyAgent(proxy);
 
 const commonHeaders = {
