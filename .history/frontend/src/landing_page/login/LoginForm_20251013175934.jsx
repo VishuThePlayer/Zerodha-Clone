@@ -48,7 +48,7 @@ function LoginForm() {
 
         // 🔧 FIXED: Wait a bit longer and use window.location.replace for better redirect
         setTimeout(() => {
-          window.location.replace("https://zerodha-clone-59ps.vercel.app/");
+          window.location.replace("ht");
         }, 2000);
       } else {
         setSnackbarType("error");
