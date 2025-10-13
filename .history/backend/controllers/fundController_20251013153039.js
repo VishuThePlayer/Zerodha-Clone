@@ -1,0 +1,11 @@
+const mongoose = require("mongoose");
+co
+
+exports.checkFunds = async(req, res) => {
+    res.json({success: true})
+    const response = mongoose.
+}
+
+exports.addFunds = async(req, res) => {
+    res.json({success: true})
+}

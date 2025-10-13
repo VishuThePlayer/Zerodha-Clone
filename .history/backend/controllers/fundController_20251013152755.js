@@ -1,0 +1,5 @@
+const mongoose = require
+
+exports.checkFunds = async(req, res) => {
+    res.json({success: true})
+}

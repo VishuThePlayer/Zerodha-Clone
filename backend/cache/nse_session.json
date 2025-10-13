@@ -1,0 +1,61 @@
+{
+  "cookies": [
+    {
+      "key": "AKA_A2",
+      "value": "A",
+      "domain": "nseindia.com",
+      "path": "/",
+      "expires": "2025-10-13T12:57:31.000Z"
+    },
+    {
+      "key": "_abck",
+      "value": "722616646F2DE841F6CFE9F810DCF601~-1~YAAQkLYRYPcRh6GZAQAAuNBu3Q4E7BcAxYd9o86twIc2SshGlWPmLga8kYcFDSR0v4zVofcOA+ubX6A3V5fjXzK+yTvyxP9BNjF/D1iv2VpqytL1QI231yEda2AStXGNHprYEkMofglXshXfa6Q23dbclcInuuyfCqHECwkUi5bawSmfBKT15KGg8GZOXCAZDwmyvZFB7emXO7RXG5VBlCacRPlXdKXdQzwtFbAgf8InDMZZjrt4npbwURbUbgu+Ex6TR8a6lq6RcTWqiiFk3NEbM9jkrMOSTBgw8qqpfqFQ+2UyrdP2MH9L3jzUGN9w7SBkE1yEE5pqztUiKUfKMvun56RP1Uj4cA8qcd5v1eAbMGncP6C6xwSvWfJXOfi8eAbJnKThpDJn6mMYJ4R0qEo3j8WyL2LbxqOgTITkXKelH+udUoBoFF/8znT7ca6e2TvuyIPocjc0Fw==~-1~-1~-1~-1~-1",
+      "domain": "nseindia.com",
+      "path": "/",
+      "expires": "2026-10-13T11:57:31.000Z"
+    },
+    {
+      "key": "ak_bmsc",
+      "value": "FB8E82DA6B25AA2F7145FBE5DC879038~000000000000000000000000000000~YAAQkLYRYPgRh6GZAQAAuNBu3R2PJpBkAYoVfGSGfMulOi41HTNIj04YWDi4AxxvpQEI65RHmPXcAccylNP20UE/Kp4Bm/qVxWvHOjzYjllle6IPp3OZOIl7g6oqeZZKr45VuVhr7GcBuoi3FsFx3FBguSfysz2l+XnO3RBQUTnW3QDHr9coJWKzozOcW8mcAmRMR5FqDLBl4LSQoTvRNs9DBbd5+xfq5wVMjmtPA/lTrqSpRCBftclPDIFsz8KJ+/oXFIBKRlgbK0ato2JoN9BQp2IBSTqVjidZvKhvFEWlTEHSWAez7DdqWhnCJOfSsIGvBxhVaSuy01oUQFeAJTxeC/pEXOCFqBqeB+xSxkY=",
+      "domain": "nseindia.com",
+      "path": "/",
+      "expires": "2025-10-13T13:57:31.000Z"
+    },
+    {
+      "key": "bm_sz",
+      "value": "64E7F160700F0ED31B48EEEC1657BBE4~YAAQkLYRYPoRh6GZAQAAuNBu3R0hLYRrKPA70WbwNQlCeFCJmS3fYRCz+wwnVvG+MoFCXwKstSTER/PK8i89RxvBALXmhmBaR3AoVzeYdgwXDH8xstdncnZ1tUYDbeR23s5M7VQjUo9hadALehPG0tQOaVkB/i64AmTZZBjhGbGh8qJ5EeHOHkGEPEFqwyaMfLaUDUJedHrtgnnYq8XuxjW+WVELaFw0k1n9IMU98CfXeg8EGQOE0gCPt/qxspHLO8SrH9+SfJIMNETjWkCJ2M2owHqZ7ATIbUUT04lU+8Qh54Ty2A0B+yU3WH6ayVwGnNB5IA+rRj4nDimROALJH97Rx6CuTpGY2+y6jM54ew==~3486257~4342838",
+      "domain": "nseindia.com",
+      "path": "/",
+      "expires": "2025-10-13T15:57:31.000Z"
+    },
+    {
+      "key": "nsit",
+      "value": "laMTRvKPbGX1WfIISeLOnNoH",
+      "domain": "www.nseindia.com",
+      "path": "/",
+      "expires": "Infinity"
+    },
+    {
+      "key": "nseappid",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkubnNlIiwiYXVkIjoiYXBpLm5zZSIsImlhdCI6MTc2MDM1NjY1NCwiZXhwIjoxNzYwMzYzODU0fQ.1Spp29XkTosJ9LwCxnFie8GbwwXbINGN9rD3zojFYJU",
+      "domain": "www.nseindia.com",
+      "path": "/",
+      "expires": "2025-10-13T13:57:34.000Z"
+    },
+    {
+      "key": "bm_mi",
+      "value": "D45C4B89CF855FCA548B38F9434BA0EE~YAAQDW/ZF4DDA8aZAQAAYN1u3R2sCR6+anFc75v07AgE2WfnrWshqmv28i8ghwXOWX9u1w2TGyko6heIzseWiMdZpPmUszFQEBimpRnIOUa6uN9ZMOp6FK6ilfD0JYpN/R8rc/2mV94pJcJTg1THle8/WSKiI4gi91zWymUqQb4nL/sa32FFTZpqw2tlilIgGS9MpCsr7dMsICQ74qnSZ0/mrghq3hTLAR/Ir+YejK8GFSAm5PV0qoXqgN3XDXI4Yyo3YFERUI2GnXHmk6nw5vnMVkY6siV4S2cuQkmCKY5a5vMUJnN5HzEh3BQjlFCDmMMsfqLsTbTcqOqvJO0u+g==~1",
+      "domain": "nseindia.com",
+      "path": "/",
+      "expires": "2025-10-13T13:57:31.000Z"
+    },
+    {
+      "key": "bm_sv",
+      "value": "E4D6D666CC63C0AFC8D42A815BD71C94~YAAQDW/ZF4HDA8aZAQAAYN1u3R3vLRyEF7TIGruhgKQW3NODF8PQc+E7bTFmAzxfAoejv2zONI1E2gcNpXYQZs8QJodeoqgTeXAuSrju2jyDkZdZtXYTAj01prhT1pjuQMgT83KHjW6FNfhKJkgtxrmlTtfVjKzd1ig4PaqcDCzdiI3rAm754KG0zclndCkygvfFqghhKrgEnrG3NrzQhARsf60dvtWltNtWdGn6u2LeW6Ya4s+bdfwOooYaVOxkRsY=~1",
+      "domain": "nseindia.com",
+      "path": "/",
+      "expires": "2025-10-13T13:57:34.000Z"
+    }
+  ],
+  "savedAt": 1760356659258
+}
