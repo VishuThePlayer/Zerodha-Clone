@@ -8,10 +8,10 @@ function Holdings() {
   const [holding, setHolding] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("https://zerodha-clone-d94u.vercel.app/api/orders/holdings")
+    axios.get("https://zerodha-clone-bui7.onrender.com/api/orders/holdings")
       .then((res) => {
         setHolding(res.data);
-        setLoading(false);
+        setLoading(false);https://zerodha-clone-59ps.vercel.app/holdings
       })
   }, []);
 
