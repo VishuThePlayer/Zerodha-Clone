@@ -55,7 +55,7 @@ function AuthGuard({ children }) {
     const redirectToLogin = () => {
       console.log("🔄 Redirecting to login...");
       // Use replace instead of href to avoid browser history issues
-      window.location.replace("https://zerodha-clone-three-delta.vercel.app/");
+      window.location.replace("");
     };
 
     // Add a small delay to ensure the page is fully loaded
