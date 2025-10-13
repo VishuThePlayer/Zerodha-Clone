@@ -32,7 +32,6 @@ const corsOptions = {
     const allowedOrigins = [
       "https://zerodha-clone-three-delta.vercel.app",
       "https://zerodha-clone-bui7.onrender.com",
-      "https://zerodha-clone-d94u.vercel.app/",
       "https://zerodha-clone-59ps.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001",
